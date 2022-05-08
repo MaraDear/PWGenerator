@@ -24,6 +24,33 @@ function createPassword() {
   var special = confirm("Use special characters in your password?");
   var password = "";
   var choose = [];
+
+  if (!uppercase && !lowercase && !numerics && !special) {
+    alert("Atleast one character type needs to be picked.")
+    return "Looks like there was a mistake. Please choose atleast one character type."
+  }
+
+  if (uppercase) {
+    choose = choose.concat(uppercasePassword);
+  }
+
+  if (lowercase) {
+    choose = choose.concat(lowercasePassword);
+  }
+
+  if (numerics) {
+    choose = choose.concat(numberPassword);
+  }
+
+  if (special) {
+    choose = choose.concat(specialPassword);
+  }
+
+  for (var i=0; i < passLength; i++) {
+    password += choose[Math.floor(Math.random() * choose.length)];
+  }
+    
+    return password;
 }
 
 // Write password to the #password input
